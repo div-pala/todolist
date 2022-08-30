@@ -1,0 +1,17 @@
+<table>
+    <thead>
+        <th>Filter your to-dos</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let todoItem of todoItems; index as i">
+            <td>
+                <div *ngIf="!(todoItem.completed)">
+                    <button> Complete</button>
+                </div>
+            </td>
+            <td>{{todoItem.task}}</td>
+            <td><button>X</button></td>
+        </tr>
+    </tbody>
+</table>
+<app-todo-form [todoItems]="todoItems"></app-todo-form>
