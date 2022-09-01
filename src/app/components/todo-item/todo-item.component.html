@@ -6,12 +6,13 @@
         <tr *ngFor="let todoItem of todoItems; index as i">
             <td>
                 <div *ngIf="!(todoItem.completed)">
-                    <button> Complete</button>
+                    <button type="button" (click)="completeTask(todoItem)">Complete</button>
                 </div>
             </td>
             <td>{{todoItem.task}}</td>
-            <td><button>X</button></td>
+            <td><button type="button" (click)="removeTask(todoItem)">X</button></td>
         </tr>
     </tbody>
 </table>
-<app-todo-form [todoItems]="todoItems"></app-todo-form>
+<!-- <app-todo-form [todoItems]="todoItems" (saveEvent)= addTask($event)></app-todo-form> -->
+<app-todo-form (saveEvent)= addTask($event)></app-todo-form> 

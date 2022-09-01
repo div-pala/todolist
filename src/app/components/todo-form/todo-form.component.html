@@ -1,6 +1,13 @@
-<!--<form (ngSubmit)="addTask()"> -->
+<!--<form (ngSubmit)="onSaveEvent($event)">
+    <h4>Enter a new task: </h4>
+    <input type="text" [(ngModel)]=newTask>
+    <p>
+        <button type="submit">Add</button>
+    </p>
+</form> -->
+
 <h4>Enter a new task: </h4>
-<input type="text">
+<input type="text" [(ngModel)]="newTaskName">
 <p>
-    <button type="submit">Add</button>
+    <button type="button" (click)="onSaveEvent(newTaskName)">Add</button>
 </p>

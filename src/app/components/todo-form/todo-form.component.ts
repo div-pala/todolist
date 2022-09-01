@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Todo } from 'src/app/interfaces/todo';
 
 @Component({
@@ -9,13 +9,17 @@ import { Todo } from 'src/app/interfaces/todo';
 export class TodoFormComponent implements OnInit {
 
   @Input() todoItems:Todo[]=[];
+  @Output() saveEvent = new EventEmitter<Todo>();
   constructor() { }
 
   ngOnInit(): void {
   }
-  defaultValue:boolean=false;
+  newTaskName:string='';
 
-  addTask(task:string):void{
-   // this.todoItems.push(task, this.defaultValue);
+  onSaveEvent(newTaskName:string): void {
+    const newTask:Todo = {task:newTaskName, completed:false};
+    console.log("New task name is = ", newTaskName);
+    this.saveEvent.emit(newTask);
+    // return newTask;
   }
 }
