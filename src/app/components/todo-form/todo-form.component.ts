@@ -20,6 +20,5 @@ export class TodoFormComponent implements OnInit {
     const newTask:Todo = {task:newTaskName, completed:false};
     console.log("New task name is = ", newTaskName);
     this.saveEvent.emit(newTask);
-    // return newTask;
   }
 }

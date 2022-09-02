@@ -1,23 +1,24 @@
+<div>
 <h1>TO-Do Lists</h1>
 <h3>A place to store your todos</h3>
-<!-- <table>
+<h3>Filter your to-dos</h3>
+<table>
     <thead>
-        <th>Filter your to-dos</th>
+        <th></th>
     </thead>
     <tbody>
         <tr *ngFor="let todoItem of todoItems; index as i">
+            <td>{{i+1}}</td>
             <td>
-                <div *ngIf="!(todoItem.completed)">
-                    <button> Complete</button>
-                </div>
-            </td>
-            <td>{{todoItem.task}}</td>
-            <td><button>X</button></td>
+                <app-todo-item
+                  [todoItem]="todoItem"
+                  (markItemAsCompleteEvent)="completeTask($event, i)"
+                  (markItemAsRemovedEvent)="removeTask($event)"
+                ></app-todo-item>
+              </td>
         </tr>
     </tbody>
 </table>
-<app-todo-form [todoItems]="todoItems"></app-todo-form>
- -->
-
-<app-todo-item [todoItems]="todoItems"></app-todo-item>
-
+            
+<app-todo-form (saveEvent)="addTask($event)"></app-todo-form>
+</div>
