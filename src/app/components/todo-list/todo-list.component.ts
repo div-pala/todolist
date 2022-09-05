@@ -52,5 +52,4 @@ export class TodoListComponent implements OnInit {
       });
     }
   }
-
 }
