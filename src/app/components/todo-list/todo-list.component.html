@@ -1,24 +1,45 @@
-<div>
+<div class="formDisplay">
 <h1>TO-Do Lists</h1>
 <h3>A place to store your todos</h3>
-<h3>Filter your to-dos</h3>
-<table>
+<h3><input type="text" class="textbox" (ngModelChange)="searchTodo($event)" 
+            placeholder="Filter your to-dos" [(ngModel)]="filterValue"></h3>
+            
+<div *ngIf="filteredTodos.length != 0; else todoList_block">
+<table class="formDisplay">
     <thead>
         <th></th>
+        <th></th>
+        <th></th>
     </thead>
-    <tbody>
-        <tr *ngFor="let todoItem of todoItems; index as i">
-            <td>{{i+1}}</td>
-            <td>
-                <app-todo-item
-                  [todoItem]="todoItem"
-                  (markItemAsCompleteEvent)="completeTask($event, i)"
-                  (markItemAsRemovedEvent)="removeTask($event)"
-                ></app-todo-item>
-              </td>
+    <tbody [ngStyle]="{'box-shadow' : '0px 0px 5px 0px rgba(0,0,0,0.75)'}">       
+        <tr *ngFor="let filteredItem of filteredTodos; index as i">
+            <td [ngStyle]="{'width' : '8px'}">{{i+1}}</td>            
+            <td [ngStyle]="{'width' : '100px'}">{{filteredItem.task}}</td>
         </tr>
     </tbody>
 </table>
+</div>
+<ng-template #todoList_block>
+    <table class="formDisplay">
+        <thead>
+            <th></th>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody [ngStyle]="{'box-shadow' : '0px 0px 5px 0px rgba(0,0,0,0.75)'}">           
+            <tr *ngFor="let todoItem of todoItems; index as i">
+                <td [ngStyle]="{'width' : '10px'}">{{i+1}}</td>
+                <td [ngStyle]="{'width' : '100%'}">
+                    <app-todo-item
+                      [todoItem]="todoItem"
+                      (markItemAsCompleteEvent)="completeTask($event, i)"
+                      (markItemAsRemovedEvent)="removeTask($event)"
+                    ></app-todo-item>
+                  </td>
+            </tr>
+        </tbody>
+    </table>  
+</ng-template>
             
 <app-todo-form (saveEvent)="addTask($event)"></app-todo-form>
 </div>

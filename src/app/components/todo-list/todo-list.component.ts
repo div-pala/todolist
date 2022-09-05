@@ -12,7 +12,9 @@ export class TodoListComponent implements OnInit {
                        {task:'Fold Clothes', completed:true},
                        {task:'Organize dresser', completed:false}
                      ]
+  filterValue : string = '';
   completedTodos: Todo[] = [];
+  filteredTodos: Todo[]=[];
   constructor() { }
 
   ngOnInit(): void {  }  
@@ -39,4 +41,16 @@ export class TodoListComponent implements OnInit {
       } 
     }
   }
+
+  searchTodo(todoName: string):any{
+    this.filteredTodos = [];
+    if (todoName === '') {
+      console.log('search empty');
+    } else {
+      this.todoItems.forEach((todo) => {
+        todo.task.toLowerCase().includes(todoName.toLowerCase()) && this.filteredTodos.push(todo);
+      });
+    }
+  }
+
 }

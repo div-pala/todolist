@@ -1,5 +1,5 @@
 <h4>Enter a new task: </h4>
-<input type="text" [(ngModel)]="newTaskName">
+<input type="text" class="textbox" placeholder="Add your to-do" [(ngModel)]="newTaskName">
 <p>
-    <button type="button" (click)="onSaveEvent(newTaskName)">Add</button>
+    <button class="addBtn" type="button" (click)="onSaveEvent(newTaskName)">Add</button>
 </p>
