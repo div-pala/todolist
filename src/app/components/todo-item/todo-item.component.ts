@@ -14,8 +14,7 @@ export class TodoItemComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   markAsCompletedEvent():void{
     this.markItemAsCompleteEvent.emit(this.todoItem.task);

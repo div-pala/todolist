@@ -2,9 +2,10 @@
     <table>
         <tr>
            <td [ngStyle]="{'width' : '20%'}">
-                <button *ngIf="!(todoItem.completed)" [class.completeBtn]="!(todoItem.completed)" type="button" (click)="markAsCompletedEvent()">Complete</button>
+                <button *ngIf="!(todoItem.completed)" [class.completeBtn]="!(todoItem.completed)" 
+                type="button" (click)="markAsCompletedEvent()">Complete</button>
            </td>
-           <td [ngStyle]="{'width' : '100%'}">
+           <td [class.completed]= "todoItem.completed" [ngStyle]="{'width' : '100%'}">
               {{todoItem.task}}
            </td>
            <td [ngStyle]="{'width' : '40%'}">

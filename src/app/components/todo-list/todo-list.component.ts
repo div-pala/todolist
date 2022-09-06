@@ -15,9 +15,17 @@ export class TodoListComponent implements OnInit {
   filterValue : string = '';
   completedTodos: Todo[] = [];
   filteredTodos: Todo[]=[];
-  constructor() { }
+  message:string='Congratulations you are up-to-date!';
+  constructor() { 
+  }
 
-  ngOnInit(): void {  }  
+  ngOnInit(): void { }
+
+  noTasks():any{
+    if(!this.todoItems.some(t => t.completed === false)) {      
+     return true;
+    }
+  }
 
   addTask(newTaskName:Todo):void{
     console.log("Inside addTask method");
@@ -25,7 +33,9 @@ export class TodoListComponent implements OnInit {
   }
 
   completeTask(todoItemName:string, i: number):void{
-    let completedItem = {task:todoItemName, completed:true};
+    let completedItem = {
+      task:todoItemName, completed:true
+    };
     console.log("Inside completeTask method", completedItem.completed);
     this.todoItems[i]=completedItem;
   }

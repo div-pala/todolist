@@ -18,3 +18,7 @@ td {
     color: brown;
     font-size: medium;
 }
+
+.completed{
+    text-decoration: line-through;
+}

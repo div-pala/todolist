@@ -20,13 +20,16 @@
 </table>
 </div>
 <ng-template #todoList_block>
+    <div *ngIf="noTasks()">
+       <strong>{{message}} </strong>
+    </div>
     <table class="formDisplay">
         <thead>
             <th></th>
             <th></th>
             <th></th>
         </thead>
-        <tbody [ngStyle]="{'box-shadow' : '0px 0px 5px 0px rgba(0,0,0,0.75)'}">           
+        <tbody [ngStyle]="{'box-shadow' : '0px 0px 5px 0px rgba(0,0,0,0.75)'}">   
             <tr *ngFor="let todoItem of todoItems; index as i">
                 <td [ngStyle]="{'width' : '10px'}">{{i+1}}</td>
                 <td [ngStyle]="{'width' : '100%'}">
